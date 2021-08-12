@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "name": "spring.cloud.nacos.config.server-addr",
+      "type": "java.lang.String",
+      "description": "Description for spring.cloud.nacos.config.server-addr."
+    },
+    {
+      "name": "spring.cloud.nacos.discovery.server-addr",
+      "type": "java.lang.String",
+      "description": "Description for spring.cloud.nacos.discovery.server-addr."
+    },
+    {
+      "name": "management.endpoints.web.exposure.include",
+      "type": "java.lang.String",
+      "description": "Description for management.endpoints.web.exposure.include."
+    },
+    {
+      "name": "ribbon.nacos.enabled",
+      "type": "java.lang.String",
+      "description": "Description for ribbon.nacos.enabled."
+    }
+  ] }
