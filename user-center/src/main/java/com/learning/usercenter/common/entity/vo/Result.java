@@ -18,7 +18,7 @@ import java.time.ZonedDateTime;
 public class Result<T> {
 
     public static final String SUCCESSFUL_CODE = "200";
-    public static final String SUCCESSFUL_MESSAGE = "处理成功";
+    public static final String SUCCESSFUL_MESSAGE = "success";
 
     /**
      * 处理结果code

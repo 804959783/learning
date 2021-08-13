@@ -1,0 +1,49 @@
+server:
+  port: 80
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true  #开启根据服务名动态获取路由地址
+          lower-case-service-id: true
+#          predicates:
+#            - name: Cookie
+#              args:
+#                pattern: "hengboy=yuqiyu"
+      routes:
+        - id: user-center   # 路由唯一标识
+          uri: lb://user-center # 路由服务地址
+          predicates:
+#            - Path=/user-center/** # 路由规则
+            - Cookie=hengboy, yuqiyu #hengboy=yuqiyu"的Cookie信息，则允许请求转发
+#            - Header=X-Request-Id, \d+ #如果X-Request-Id的值为数字，那么就可以转发
+#            - Host=**.baidu.com,localhost
+#            - Method=POST
+#            - Query=xxx, zzz #限定了参数xxx必须为zzz时才会被成功转发
+#            - RemoteAddr=192.168.1.56/24 #192.168.1.56是客户端的IP地址，而24则是子网掩码才会被成功转发
+#            - Before=2019-05-01T00:00:00+08:00[Asia/Shanghai] #允许2019-05-01日凌晨之前通过路由转发
+#            - After=2019-04-29T00:00:00+08:00[Asia/Shanghai] #允许2019-04-29凌晨之后进行转发
+#            - Between=2019-04-29T00:00:00+08:00[Asia/Shanghai], 2019-05-01T00:00:00+08:00[Asia/Shanghai] #2019-04-29日凌晨后 & 2019-05-01凌晨之前请求转发
+#        - id: user-center-2   # 路由唯一标识
+#          uri: lb://user-center-2 # 路由服务地址
+#          predicates:
+#            - Path=/user-center-2/** # 路由规则
+#            - Cookie=hengboy, yuqiyu #hengboy=yuqiyu"的Cookie信息，则允许请求转发
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    org.springframework.cloud.gateway: trace
+    org.springframework.http.server.reactive: debug
+    org.springframework.web.reactive: debug
+    reactor.ipc.netty: debug
